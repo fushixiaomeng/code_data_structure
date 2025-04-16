@@ -68,6 +68,10 @@ int main(int argc, char *argv[])
         printf("Failed to insert %d at index %d\n", data, i);
     }
     print_list(&list);
+    printf("反转链表\n");
+    list_reverse(&list);
+    print_list(&list);
+
     // free the memory
 
     list_free(&list);
@@ -250,4 +254,18 @@ bool list_free(List* list)
     }
     list->head = NULL;
     return true;
+}
+
+Node* list_reverse(List* list){
+    Node *prev = NULL;
+    Node *current = list->head;
+    Node *next = NULL;
+    while (current != NULL) {
+        next = current->next; // Store next node
+        current->next = prev; // Reverse current node's pointer
+        prev = current;       // Move pointers one position ahead
+        current = next;
+    }
+    list->head = prev; // Update head to the new first node
+    return prev;
 }

@@ -21,4 +21,5 @@ bool list_free(List* list);
 Node* list_find(List* list, int data);
 Node* list_find_by_i(List* list, int i);
 List* list_headinsert(List* list, int data);
+Node* list_reverse(List* list);
 #endif
